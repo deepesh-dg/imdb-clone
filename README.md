@@ -6,5 +6,13 @@ A clone of IMDB using [Next.js](https://nextjs.org/), [sanity](https://sanity.io
 
 1. `npx create-next-app stack-overflow-clone`
 2. configure linting with prettier and eslint
-3. go to [sanity.io](https://sanity.io/) and signup and create a project. Here you will get a customized npm create cmd `npm create sanity@latest -- --quickstart <project-id>`
-4. configure server and run `npm run dev`
+3. go to [sanity.io](https://sanity.io/) and signup and create a project. Here you will get the project id.
+4. go to [manage.sanity.io](https://manage.sanity.io/) and select th project. then go to `API` tab and add `https://localhost:3000` as CORS Origin with credentials `true`.
+
+## Steps to access sanity admin panel via next.js domain
+
+1. `npm install sanity next-sanity`
+2. create sanity.config.ts file in root directory and configure it
+3. create `/app/admin/[[...index]]/page.tsx` for routing to sanity admin panel and configure it.
+4. you will see that sanity studio is running on [https://localhost:3000/admin](https://localhost:3000/admin)
+5. since we are using `clerk` for authentication, we need to create user schema in sanity to sync with clerk. create `/src/sanity/schemas/user.schema.ts` and configure it.
